@@ -1,0 +1,451 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.purple {
+    color: #7342d6;
+}
+
+img {
+    width: 100%; /*Except the logo image which is set to a hard-coded width of 160px using a
+    class selector which has a higher priority compared to the element selector.*/
+    
+    /* Below code is to make the homepage image smaller if needed:
+    height: 100%;
+    max-height: 50vh;
+    padding: 20px;
+    */
+}
+
+button {
+    cursor: pointer; /*Show a pointer rather than an arrow when we cursor over Button.*/
+}
+
+button:active {
+    transform: translateY(1px); /*Adds a cool effect such that the button will translate 1px in y-axis when we click on it.*/
+}
+
+p {
+    line-height: 1.5;
+}
+
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/*LANDING PAGE = NAV BAR + HEADER*/
+
+/*NAVIGATION BAR*/
+
+nav {
+    height: 80px;
+    display: flex;
+}
+
+.nav__container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.logo {
+    width: 160px;
+}
+
+ul {
+    display: flex;
+}
+
+li {
+    list-style-type: none;
+}
+
+.nav__link {
+    margin-left: 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #7342d6;
+    font-weight: bold;
+    padding: 8px; /*To make the border around the 'Books' nav link look better.*/
+}
+
+.nav__link--primary {
+    border: 2px solid #7342d6;
+    border-radius: 4px;
+}
+
+.nav__link:hover {
+    text-decoration: underline;
+}
+
+.nav__link--primary:hover { /*Don't put an underline under the 'Books' nav link upon hovering over it.*/
+    text-decoration: none;
+}
+
+/*
+Single code to show the underline for the 'Home' and 'Contact' nav links upon hovering over them except the 'Books' nav link.
+.nav__link:hover:not(.nav__link--primary) {
+    text-decoration: underline;
+}
+*/
+
+.btn__menu {
+    background-color: transparent;
+    font-size: 40px;
+    border: none;
+    color: #7342d6;
+    display: none; /*Burger Menu Icon will be invisible normally and will be visible on small screen resolutions as set with @media() query.*/
+}
+
+.menu__backdrop {
+    background-color: #242424;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0; /*OR height: 100vh;*/
+    right: 0; /*OR width: 100vw;*/
+    z-index: 3;
+    /*display: flex;*/ /*We have set the .menu__backdrop to display: none; normally when it's close.*/
+    justify-content: center;
+    align-items: center;
+    /*Animation for .menu__backdrop*/
+    /*display: none;*/ /*We cannot add an animation to something that is display: none; so commenting it and changing the visibility instead.*/
+    display: flex;
+    visibility: hidden; /*.menu__backdrop is there, it exists, but it's hidden therefore we are able to animate it.*/
+    opacity: 0;
+    transition: all 300ms ease;
+    transform: translate(100%); /*Normally, the .menu__backdrop visibility will remain hidden and it also translates 100% off its position by extending beyond the screen.*/
+}
+
+.menu--open .menu__backdrop {
+    /*display: flex;*/ /*.menu__backdrop becomes display: flex; when it opens.*/
+    visibility: visible;
+    opacity: 1;
+    transform: translate(0); /*When the menu is open, the .menu__backdrop comes back to its original position.*/
+}
+
+.menu--open { /*To prevent scrolling when the .menu__backdrop is open.*/
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.btn__menu--close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    padding: 8px;
+    color: white;
+}
+
+.menu__link {
+    color: white;
+    font-size: 40px;
+}
+
+.menu__list {
+    padding: 32px 0;
+}
+
+.menu__list--wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*HEADER*/
+
+#landing {
+    background-color: rgba(115, 66, 214, 0.1);
+}
+
+header {
+    min-height: calc(100vh - 80px);
+}
+
+.header__container {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+h1 {
+    font-size: 56px;
+    color: #7342d6;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.btn {
+    background-color: #7342d6;
+    color: white;
+    padding: 12px 24px;
+    font-size: 20px;
+    border-radius: 4px;
+    border: none;
+}
+
+.header__description {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /*To center the button or we can add a max-width: 200px; to the homepage button's .btn class.*/
+}
+
+.header__img--wrapper {
+    padding: 20px;
+    z-index: 2; /*To make the header image appear on top of the wave svg image that is before the highlights section.*/
+}
+
+/*HIGHLIGHTS*/
+
+.container {
+    padding: 56px 0; /*Try to keep the padding and margin values at an increment of 8 to make the website layout look consistent.*/
+}
+
+.row {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.highlights__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.highlight {
+    padding: 0 24px;
+    width: calc(100% / 3); /*Better to use calc(100% / 3) rather than width: 33.33%;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.highlight__para {
+    text-align: center;
+    max-width: 280px; /*To make the paragraph placement look consistent.*/
+}
+
+.highlight__img {
+    border: 2px solid #7342d65d;
+    color: #7342d6;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    font-size: 32px;
+    margin-bottom: 24px;
+}
+
+.highlight__subtitle {
+    font-size: 20px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+#highlights {
+    position: relative; /*To position the highlishts before and after pseudo class with respect to the highlights section.*/
+    max-width: 100vw;
+}
+
+#highlights::before, #highlights::after {
+    background: url('assets/wave.svg');
+    content: ""; /*We need to put an empty string in the content tag for our pseudo selectors so that the svg can show up.*/
+    position: absolute;
+    left: 0;
+    width: 101vw;
+    height: 12vw; /*This height gets bigger, the wider the screen gets as it is dependent on vw i.e., viewport width.*/
+    z-index: 1;
+    /*cover and no-repeat cause the svg image to span the whole width without repeating.*/
+    background-size: cover; /*Wave svg image will cover the whole part of space available to it right before and after the highlights section.*/
+    background-repeat: no-repeat; /*Wave svg image will not repeat itself.*/ 
+}
+
+#highlights::before {
+    top: 1px;
+    transform: translateY(-100%);
+}
+
+#highlights::after {
+    bottom: 1px;
+    transform: translateY(100%) rotate(180deg);
+}
+
+/*FEATURED BOOKS*/
+
+#featured {
+    background-color: rgba(115, 66, 214, 0.1);
+    padding-top: 8vw; /*Since the highlights before and after heights are based vw i.e., on vertical width so this needs to be based on vw as well.*/
+}
+
+.book__img {
+    max-height: 380px;
+    transition: all 300ms ease; /*Eases the transition of transform book scale by 3% applied below in .book:hover .book__img.*/
+    cursor: no-drop; /*To show that we haven't enabled the book click and open (linking to another page) feature in this project website.*/
+}
+
+.books__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book {
+    width: 25%;
+    padding: 24px;
+}
+
+.book__img--wrapper {
+    margin-bottom: 8px;
+    border-radius: 4px;
+    overflow: hidden; /*So that the curve edges given using border-radius are visible.*/
+    display: flex; /*Eliminates the small gap on the bottom of the .book__img inside the .book__img--wrapper so that the book image does not come out of the wrapper frame when we hover over it.*/
+}
+
+.book:hover .book__img {
+    transform: scale(1.03); /*Increases the book scale by 3% when we hover over the book image.*/
+}
+
+.book__title {
+    font-size: 20px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.book__title:hover {
+    text-decoration: underline;
+    cursor: not-allowed; /*OR cursor: no-drop; mean same thing and show the same cursor.*/
+}
+
+.book__ratings {
+    margin-bottom: 8px;
+    color: #fabf2a;
+    text-align: center;
+}
+
+.book__price--normal {
+    text-decoration: line-through;
+    padding-right: 6px;
+    color: #bfbfbf;
+}
+
+.book__price {
+    text-align: center;
+}
+
+/*EXPLORE*/
+
+#explore {
+    background: rgba(115, 66, 214, 0.1);
+}
+
+.row__column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*FOOTER*/
+
+footer {
+    background-color: #242424;
+}
+
+.footer__logo--img {
+    width: 160px;
+    filter: grayscale(1) invert(1); /*grayscale() converts the svg colors to dark colors and invert() flips between black and white colors.*/
+}
+
+.footer__link, .footer__copyright {
+    color: #fff;
+
+}
+
+.footer__links--wrapper {
+    margin: 20px 0 24px 0;
+}
+
+.footer__img-wrapper {
+    display: flex; /*By default, the HTML element <figure> has a higher height than the <img>
+    so we do display: flex; to get rid of that extra space at the bottom of the image element inside the figure element.*/
+}
+
+.footer__link {
+    padding: 0 8px;
+}
+
+/*FOR WEBSITE RESPONSIVENESS*/
+
+/*FOR TABLETS*/
+@media(max-width: 768px) {
+    .header__description {
+        padding: 0 24px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    button {
+        font-size: 18px;
+    }
+
+    .book {
+        width: 50%;
+    }
+}
+
+/*FOR SMALL PHONES AND LARGE SMARTPHONES*/
+@media(max-width: 550px) {
+    .nav__links--wrapper {
+        display: none;
+    }
+
+    .btn__menu {
+        display: block;
+    }
+
+    .highlight {
+        width: 100%;
+    }
+
+    .highlight:not(:last-child) {
+        margin-bottom: 24px;
+    }
+}
