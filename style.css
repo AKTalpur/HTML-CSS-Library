@@ -136,14 +136,14 @@ Single code to show the underline for the 'Home' and 'Contact' nav links upon ho
     visibility: hidden; /*.menu__backdrop is there, it exists, but it's hidden therefore we are able to animate it.*/
     opacity: 0;
     transition: all 300ms ease;
-    transform: translate(100%); /*Normally, the .menu__backdrop visibility will remain hidden and it also translates 100% off its position by extending beyond the screen.*/
+    /*transform: translate(100%);*/ /*Normally, the .menu__backdrop visibility will remain hidden and it also translates 100% off its position by extending beyond the screen.*/
 }
 
 .menu--open .menu__backdrop {
     /*display: flex;*/ /*.menu__backdrop becomes display: flex; when it opens.*/
     visibility: visible;
     opacity: 1;
-    transform: translate(0); /*When the menu is open, the .menu__backdrop comes back to its original position.*/
+    /*transform: translate(0);*/ /*When the menu is open, the .menu__backdrop comes back to its original position.*/
 }
 
 .menu--open { /*To prevent scrolling when the .menu__backdrop is open.*/
