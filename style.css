@@ -149,7 +149,7 @@ Single code to show the underline for the 'Home' and 'Contact' nav links upon ho
 
 .menu--open { /*To prevent scrolling when the .menu__backdrop is open.*/
     max-height: 100vh;
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
 .btn__menu--close {
